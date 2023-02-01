@@ -42,7 +42,7 @@ function Register() {
       >
         <h1>Sign Up</h1>
         <br />
-        <form className="col-sm-6 offset-sm-3 ">
+        <div className="col-sm-6 offset-sm-3 ">
           <input
             value={name}
             type="text"
@@ -54,7 +54,7 @@ function Register() {
           />
           <br />
           <input
-            type="email"
+            type="text"
             className="form-control"
             placeholder="Enter email"
             value={email}
@@ -77,7 +77,7 @@ function Register() {
           <button className="btn btn-primary" onClick={SignUp}>
             Sign Up
           </button>
-        </form>
+        </div>
       </div>
     </>
   );
