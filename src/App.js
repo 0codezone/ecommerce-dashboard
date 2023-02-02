@@ -5,6 +5,7 @@ import Register from "./main/Register";
 import AddProduct from "./main/AddProduct";
 import UpdateProduct from "./main/UpdateProduct";
 import Protected from "./Protected";
+import ProductList from "./main/ProductList";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
 
           <Route path="/add" element={<Protected Cmp={AddProduct} />} />
           <Route path="/update" element={<Protected Cmp={UpdateProduct} />} />
+          <Route path="/PList" element={<Protected Cmp={ProductList} />} />
         </Routes>
       </BrowserRouter>
     </div>
