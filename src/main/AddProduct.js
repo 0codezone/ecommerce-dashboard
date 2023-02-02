@@ -5,14 +5,14 @@ import { useNavigate } from "react-router-dom";
 function AddProduct() {
   const navigate = useNavigate();
 
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [mobile, setMobile] = useState("");
+  const [Pname, setPName] = useState("");
+  const [Pprice, setPprice] = useState("");
+  const [Pcode, setPcode] = useState("");
 
   async function addProd() {
-    let data = { name, email, mobile };
+    let data = { Pname, Pprice, Pcode };
     console.warn(data);
-    let result = await fetch("http://localhost:3000/users", {
+    let result = await fetch("http://localhost:3005/users", {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -20,11 +20,9 @@ function AddProduct() {
       },
       body: JSON.stringify(data),
     });
-
     result = await result.json();
-    console.warn(result);
     localStorage.setItem("user-info", JSON.stringify(result));
-    navigate("/add");
+    navigate("/PList");
   }
   return (
     <>
@@ -39,35 +37,35 @@ function AddProduct() {
           <input
             type="text"
             className="form-control"
-            value={name}
+            value={Pname}
             placeholder="Product Name"
             onChange={(e) => {
-              setName(e.target.value);
+              setPName(e.target.value);
             }}
           />
           <br />
           <input
             type="text"
             className="form-control"
-            value={email}
-            placeholder="Email"
+            value={Pprice}
+            placeholder="Product Price"
             onChange={(e) => {
-              setEmail(e.target.value);
+              setPprice(e.target.value);
             }}
           />
           <br />
           <input
             type="text"
             className="form-control"
-            value={mobile}
+            value={Pcode}
             placeholder="Product No"
             onChange={(e) => {
-              setMobile(e.target.value);
+              setPcode(e.target.value);
             }}
           />
           <br />
           <button className="btn btn-primary" onClick={addProd}>
-            save new product
+            Add Product
           </button>
         </div>
       </div>

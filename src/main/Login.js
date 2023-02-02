@@ -15,9 +15,8 @@ function Login() {
 
   async function onLogin() {
     let item = { email, password };
-    console.warn(item);
 
-    let result = await fetch("http://localhost:3000/Login", {
+    let result = await fetch("http://localhost:3004/Login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -26,7 +25,6 @@ function Login() {
       body: JSON.stringify(item),
     });
     result = await result.json();
-    console.warn(result);
     localStorage.setItem("user-info", JSON.stringify(result));
     navigate("/add");
   }
@@ -43,7 +41,6 @@ function Login() {
         <div className="col-sm-6 offset-sm-3 ">
           <input
             type="text"
-            value={email}
             className="form-control"
             placeholder="Enter email"
             onChange={(e) => {
@@ -57,7 +54,6 @@ function Login() {
             type="password"
             className="form-control"
             placeholder="Password"
-            value={password}
             onChange={(e) => {
               setPassword(e.target.value);
             }}

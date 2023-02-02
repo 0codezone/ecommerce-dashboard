@@ -16,7 +16,10 @@ function App() {
           <Route path="/" element={<Register />} />
 
           <Route path="/add" element={<Protected Cmp={AddProduct} />} />
-          <Route path="/update" element={<Protected Cmp={UpdateProduct} />} />
+          <Route
+            path="/update/:id"
+            element={<Protected Cmp={UpdateProduct} />}
+          />
           <Route path="/PList" element={<Protected Cmp={ProductList} />} />
         </Routes>
       </BrowserRouter>

@@ -19,7 +19,7 @@ function Register() {
   async function SignUp() {
     let item = { name, email, password };
 
-    let result = await fetch("http://localhost:3000/Register", {
+    let result = await fetch("http://localhost:3004/Register", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -28,7 +28,6 @@ function Register() {
       body: JSON.stringify(item),
     });
     result = await result.json();
-    console.warn(result);
     localStorage.setItem("user-info", JSON.stringify(result));
     navigate("/add");
   }
@@ -44,7 +43,6 @@ function Register() {
         <br />
         <div className="col-sm-6 offset-sm-3 ">
           <input
-            value={name}
             type="text"
             className="form-control"
             placeholder="Name"
@@ -57,14 +55,12 @@ function Register() {
             type="text"
             className="form-control"
             placeholder="Enter email"
-            value={email}
             onChange={(e) => {
               setEmail(e.target.value);
             }}
           />
           <br />
           <input
-            value={password}
             type="password"
             className="form-control"
             placeholder="Password"

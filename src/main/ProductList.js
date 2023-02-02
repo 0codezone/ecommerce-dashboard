@@ -1,19 +1,27 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import Header from "../Header";
 
-function ProductList(props) {
+function ProductList() {
   let [data, setdata] = useState([]);
 
   useEffect(() => {
     getList();
   }, []);
 
-  function getList() {
-    fetch("http://localhost:3000/users").then((result) => {
-      result.json().then((response) => {
-        setdata(response);
-      });
+  async function getList() {
+    let result = await fetch("http://localhost:3005/users");
+    result = await result.json();
+    setdata(result);
+  }
+
+  async function deleteProd(id) {
+    let result = await fetch(`http://localhost:3005/users/${id}`, {
+      method: "DELETE",
     });
+    result = await result.json();
+    console.warn(result);
+    getList();
   }
 
   return (
@@ -30,16 +38,25 @@ function ProductList(props) {
             <tbody>
               <tr>
                 <th>Id</th>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Mobile</th>
+                <th>PName</th>
+                <th>Pprice</th>
+                <th>Pcode</th>
+                <th colSpan={2}>Operation</th>
               </tr>
               {data.map((item, k) => (
                 <tr key={k}>
                   <td>{item.id}</td>
-                  <td>{item.name}</td>
-                  <td>{item.email}</td>
-                  <td>{item.mobile}</td>
+                  <td>{item.Pname}</td>
+                  <td>{item.Pprice}</td>
+                  <td>{item.Pcode}</td>
+                  <td>
+                    <button onClick={() => deleteProd(item.id)}>Delete</button>
+                  </td>
+                  <td>
+                    <Link to={"/update/" + item.id}>
+                      <span className="update">Update</span>
+                    </Link>
+                  </td>
                 </tr>
               ))}
             </tbody>

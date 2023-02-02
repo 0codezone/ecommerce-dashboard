@@ -1,7 +1,8 @@
-import React from "react";
 import Header from "../Header";
 
-function UpdateProduct() {
+function UpdateProduct(props) {
+  console.warn(props);
+
   return (
     <div>
       <Header />

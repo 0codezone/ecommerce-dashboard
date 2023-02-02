@@ -6,7 +6,6 @@ import "./App.css";
 
 function Header() {
   const user = JSON.parse(localStorage.getItem("user-info"));
-  console.warn(user);
 
   const navigate = useNavigate();
   function onLogout() {
